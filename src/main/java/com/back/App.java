@@ -64,9 +64,14 @@ public class App {
 
         int id = Integer.parseInt(cmdBits[1]);
 
-        delete(id);
+        int deletedIndex = delete(id);
 
-        System.out.println("%d번 명언이 제되었습니다.".formatted(id));
+        if (deletedIndex == -1) {
+            System.out.println("%d번 명언은 존재하지 않습니다.".formatted(id));
+            return;
+        }
+
+        System.out.println("%d번 명언이 삭제되었습니다.".formatted(id));
     }
     // action(명령어) 끝
 
@@ -98,7 +103,7 @@ public class App {
         return wiseSaying;
     }
 
-    void delete(int id) {
+    int delete(int id) {
         int deleteIndex = -1;
 
         for (int i = 0; i <= wiseSayingsLastIndex; i++) {
@@ -108,7 +113,7 @@ public class App {
             }
         }
 
-        if (deleteIndex == -1) return;
+        if (deleteIndex == -1) return deleteIndex;
 
         for (int i = deleteIndex + 1; i <= wiseSayingsLastIndex; i++) {
             wiseSayings[i - 1] = wiseSayings[i];
@@ -116,6 +121,8 @@ public class App {
 
         wiseSayings[wiseSayingsLastIndex] = null;
         wiseSayingsLastIndex--;
+
+        return deleteIndex;
     }
     // 내부 로직 끝
 }
