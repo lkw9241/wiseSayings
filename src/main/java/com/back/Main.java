@@ -22,12 +22,22 @@ public class Main {
                 System.out.print("작가 : ");
                 String wiseSayingAuthor = scanner.nextLine().trim();
 
-                int no = ++lastId;
+                int id = ++lastId;
 
-                System.out.println("%d번 명언이 등록되었습니다.".formatted(no));
+                WiseSaying wiseSaying = new WiseSaying();
+                wiseSaying.id = id;
+                wiseSaying.content = wiseSayingContent;
+                wiseSaying.author = wiseSayingAuthor;
+
+                System.out.println("wiseSaying.id : %d".formatted(wiseSaying.id));
+                System.out.println("wiseSaying.content : %s".formatted(wiseSaying.content));
+                System.out.println("wiseSaying.author : %s".formatted(wiseSaying.author));
+
+                System.out.println("%d번 명언이 등록되었습니다.".formatted(id));
             }
         }
 
         scanner.close();
     }
 }
+
