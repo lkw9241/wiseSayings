@@ -40,18 +40,23 @@ public class App {
 
     void actionWrite() {
         System.out.print("명언 : ");
-        String wiseSayingContent = scanner.nextLine().trim();
+        String content = scanner.nextLine().trim();
         System.out.print("작가 : ");
-        String wiseSayingAuthor = scanner.nextLine().trim();
+        String author = scanner.nextLine().trim();
 
-        int id = ++lastId;
+        WiseSaying wiseSaying = write(content, author);
 
+        System.out.println("%d번 명언이 등록되었습니다.".formatted(wiseSaying.id));
+    }
+
+    WiseSaying write(String content, String author) {
         WiseSaying wiseSaying = new WiseSaying();
-        wiseSaying.id = id;
-        wiseSaying.content = wiseSayingContent;
-        wiseSaying.author = wiseSayingAuthor;
+        wiseSaying.id = ++lastId;
+        wiseSaying.content = content;
+        wiseSaying.author = author;
+
         wiseSayings[++wiseSayingsLastIndex] = wiseSaying;
 
-        System.out.println("%d번 명언이 등록되었습니다.".formatted(id));
+        return wiseSaying;
     }
 }
