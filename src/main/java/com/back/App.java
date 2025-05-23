@@ -22,12 +22,8 @@ public class App {
                 actionList();
             } else if (cmd.equals("등록")) {
                 actionWrite();
-            } else if (cmd.equals("삭제?id=1")) {
-                actionDelete(1);
-            } else if (cmd.equals("삭제?id=2")) {
-                actionDelete(2);
-            } else if (cmd.equals("삭제?id=3")) {
-                actionDelete(2);
+            } else if (cmd.startsWith("삭제")) {
+                actionDelete(cmd);
             }
         }
 
@@ -58,10 +54,19 @@ public class App {
         System.out.println("%d번 명언이 등록되었습니다.".formatted(wiseSaying.id));
     }
 
-    void actionDelete(int id) {
+    void actionDelete(String cmd) {
+        String[] cmdBits = cmd.split("=", 2);
+
+        if (cmdBits.length < 2 || cmdBits[1].isEmpty()) {
+            System.out.println("id를 입력해주세요.");
+            return;
+        }
+
+        int id = Integer.parseInt(cmdBits[1]);
+
         delete(id);
 
-        System.out.println("%d번 명언이 삭제되었습니다.".formatted(id));
+        System.out.println("%d번 명언이 제되었습니다.".formatted(id));
     }
     // action(명령어) 끝
 
