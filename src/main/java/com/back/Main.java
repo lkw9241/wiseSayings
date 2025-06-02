@@ -6,5 +6,4 @@ public class Main {
         app.run();
     }
 }
-
-//fork 완료
+//Main class

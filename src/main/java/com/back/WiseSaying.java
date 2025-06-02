@@ -5,3 +5,5 @@ public class WiseSaying {
     String content;
     String author;
 }
+
+//WiseSaying class
