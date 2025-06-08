@@ -24,7 +24,7 @@ public class App{
                 actionWrite();
 
             }else if (cmd.startsWith("삭제")) {
-//                actionDelete(cmd);
+                actionDelete(cmd);
             } else if (cmd.startsWith("수정")){
 //                actionModify(cmd);
 
@@ -74,10 +74,33 @@ public class App{
 
     }
 
-    void actionDelete() {
+    void actionDelete(String cmd) {
+        String[] cmdBits = cmd.split("=",2);
+        if(cmdBits.length<2||cmdBits[1].isEmpty()){
+            System.out.println("id를 입력해주세요");
+        }
+
+        int id = Integer.parseInt(cmdBits[1]);
+        Boolean deleted = delete(id);
+        if(!deleted) {
+            System.out.println("%d번 명언은 존재하지 않습니다.".formatted(id));
+        }else {
+            System.out.println("%d번 명언이 삭제 되었습니다.".formatted(id));
+
+        }
+
     }
-    void delete() {
+    Boolean delete(int id) {
+
+        for(int i = 0; i<wiseSayings.size(); i++){
+            if(wiseSayings.get(i).id==id){
+                wiseSayings.remove(i);
+                return true;
+            }
+        }
+        return false;
     }
+
     void actionModify(){
 
     }
