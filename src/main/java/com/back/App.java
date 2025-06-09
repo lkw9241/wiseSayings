@@ -115,18 +115,18 @@ public class App {
 
     // 명언 삭제: 리스트에서 ID가 일치하는 항목 제거
     private boolean delete(int id) {
-//        for (int i = 0; i < wiseSayings.size(); i++) {
-//            if (wiseSayings.get(i).getId() == id) {
-//                wiseSayings.remove(i);
-//                return true;  // 삭제 성공
-//            }
-//        }
-//        return false;  // 삭제 실패
-//    }
-        wiseSayings
-                .removeIf(wiseSaying -> wiseSaying.getId() == id);
+        for (int i = 0; i < wiseSayings.size(); i++) {
+            if (wiseSayings.get(i).getId() == id) {
+                wiseSayings.remove(i);
+                return true;  // 삭제 성공
+            }
+        }
+        return false;  // 삭제 실패
     }
-df
+//        wiseSayings
+//                .removeIf(wiseSaying -> wiseSaying.getId() == id);
+//    }
+
 
 
 
@@ -170,10 +170,17 @@ df
     // ID로 명언 찾기
     //"wiseSayings 리스트 안에 있는 명언 하나하나를 차례대로 꺼내서, wiseSaying이라는 이름으로 사용할게!"
     private WiseSaying findById(int id) {
-        for (WiseSaying ws : wiseSayings) {
-            if (ws.getId() == id) return ws;
-        }
-        return null;  // 못 찾으면 null 반환
+//        for (WiseSaying ws : wiseSayings) {
+//            if (ws.getId() == id) return ws;
+//        }
+//        return null;  // 못 찾으면 null 반환
+//    }
+
+    return wiseSayings
+            .stream()
+            .filter(wiseSaying -> wiseSaying.getId() == id)
+            .findFirst()
+            .orElse(null); // 못 찾으면 null 반환
     }
 
     // 명언 수정 적용
