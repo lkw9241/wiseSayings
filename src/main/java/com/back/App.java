@@ -120,7 +120,7 @@ public class App {
                 return true;  // 삭제 성공
             }
         }
-        return false;  // 삭제 실패 (존재하지 않음)
+        return false;  // 삭제 실패
     }
 
 
