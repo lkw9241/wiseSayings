@@ -3,6 +3,7 @@ package com.back;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class App {
     // 사용자 입력을 받기 위한 Scanner
@@ -177,5 +178,14 @@ public class App {
     }
 //수정할 대상 명언 객체(wiseSaying)와
 //새로운 내용(content), **새로운 작가(author)**를 함께 넘겨주는 거예요.
+
+//    private int findIndexById(int id) {
+//        return IntStream.range(0, wiseSayings.size())
+//                .filter(i -> wiseSayings.get(i).getId() == id)
+//                .findFirst()
+//                .orElse(-1); // 못 찾으면 -1 반환
+//    }
+
+
 
 }
