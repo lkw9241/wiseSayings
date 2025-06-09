@@ -56,12 +56,8 @@ public class App {
 
     // 명언을 최신순으로 정렬해서 복사한 리스트 반환
     private List<WiseSaying> findForList() {
-        List<WiseSaying> copy = new ArrayList<>();
-        // 뒤에서부터 앞으로 읽어서 최신순 정렬된 리스트 생성
-        for (int i = wiseSayings.size() - 1; i >= 0; i--) {
-            copy.add(wiseSayings.get(i));
-        }
-        return copy;
+
+        return wiseSayings.reversed();
     }
 
 
