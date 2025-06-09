@@ -83,10 +83,8 @@ public class App {
 
     // 명언 등록: 새로운 객체 생성 후 리스트에 추가
     WiseSaying write(String content, String author) {
-        WiseSaying wiseSaying = new WiseSaying();
-        wiseSaying.id = ++lastId;  // id 증가 및 할당
-        wiseSaying.content = content;
-        wiseSaying.author = author;
+        WiseSaying wiseSaying = new WiseSaying(++lastId, content, author);
+
 
         wiseSayings.add(wiseSaying);
         return wiseSaying;
