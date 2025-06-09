@@ -49,8 +49,8 @@ public class App {
 
         // 리스트 내 명언 하나씩 출력
         for (WiseSaying wiseSaying : forListWiseSayings) {
-            System.out.printf("%d / %s / %s\n", wiseSaying.id,
-                    wiseSaying.author, wiseSaying.content);
+            System.out.printf("%d / %s / %s\n", wiseSaying.getId(),
+                    wiseSaying.getAuthor(), wiseSaying.getContent());
         }
     }
 
@@ -78,7 +78,7 @@ public class App {
         WiseSaying wiseSaying = write(content, author);
 
         // 등록 완료 메시지 출력
-        System.out.println("%d번 명언이 등록되었습니다.".formatted(wiseSaying.id));
+        System.out.println("%d번 명언이 등록되었습니다.".formatted(wiseSaying.getId()));
     }
 
     // 명언 등록: 새로운 객체 생성 후 리스트에 추가
@@ -119,7 +119,7 @@ public class App {
     // 명언 삭제: 리스트에서 ID가 일치하는 항목 제거
     private boolean delete(int id) {
         for (int i = 0; i < wiseSayings.size(); i++) {
-            if (wiseSayings.get(i).id == id) {
+            if (wiseSayings.get(i).getId() == id) {
                 wiseSayings.remove(i);
                 return true;  // 삭제 성공
             }
@@ -150,11 +150,11 @@ public class App {
         }
 
         // 기존 명언 내용 보여주고 수정 입력받기
-        System.out.printf("명언(기존) : %s\n", wiseSaying.content);
+        System.out.printf("명언(기존) : %s\n", wiseSaying.getContent());
         System.out.print("명언 : ");
         String content = scanner.nextLine().trim();
 
-        System.out.printf("작가(기존) : %s\n", wiseSaying.author);
+        System.out.printf("작가(기존) : %s\n", wiseSaying.getAuthor());
         System.out.print("작가 : ");
         String author = scanner.nextLine().trim();
 
@@ -169,15 +169,15 @@ public class App {
     //"wiseSayings 리스트 안에 있는 명언 하나하나를 차례대로 꺼내서, wiseSaying이라는 이름으로 사용할게!"
     private WiseSaying findById(int id) {
         for (WiseSaying ws : wiseSayings) {
-            if (ws.id == id) return ws;
+            if (ws.getId() == id) return ws;
         }
         return null;  // 못 찾으면 null 반환
     }
 
     // 명언 수정 적용
     private void modify(WiseSaying wiseSaying, String content, String author) {
-        wiseSaying.content = content;
-        wiseSaying.author = author;
+        wiseSaying.setContent(content);
+        wiseSaying.setAuthor(author);
     }
 //수정할 대상 명언 객체(wiseSaying)와
 //새로운 내용(content), **새로운 작가(author)**를 함께 넘겨주는 거예요.
