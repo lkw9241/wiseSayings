@@ -115,14 +115,19 @@ public class App {
 
     // 명언 삭제: 리스트에서 ID가 일치하는 항목 제거
     private boolean delete(int id) {
-        for (int i = 0; i < wiseSayings.size(); i++) {
-            if (wiseSayings.get(i).getId() == id) {
-                wiseSayings.remove(i);
-                return true;  // 삭제 성공
-            }
-        }
-        return false;  // 삭제 실패
+//        for (int i = 0; i < wiseSayings.size(); i++) {
+//            if (wiseSayings.get(i).getId() == id) {
+//                wiseSayings.remove(i);
+//                return true;  // 삭제 성공
+//            }
+//        }
+//        return false;  // 삭제 실패
+//    }
+        wiseSayings
+                .removeIf(wiseSaying -> wiseSaying.getId() == id);
     }
+df
+
 
 
     // 명언 수정 기능
