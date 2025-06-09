@@ -6,13 +6,13 @@ import java.util.Scanner;
 
 public class App {
     // 사용자 입력을 받기 위한 Scanner
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     // 명언 고유 번호 관리용 변수
-    int lastId = 0;
+    private int lastId = 0;
 
     // 명언들을 저장하는 리스트 (동적 크기 관리 가능)
-    List<WiseSaying> wiseSayings = new ArrayList<>();
+    private List<WiseSaying> wiseSayings = new ArrayList<>();
 
     // 프로그램 실행 진입점
     void run() {
@@ -40,7 +40,7 @@ public class App {
     }
 
     // 명언 목록을 최신순으로 출력하는 기능
-    void actionList() {
+    private void actionList() {
         System.out.println("번호 / 작가 / 명언");
         System.out.println("----------------------");
 
@@ -55,7 +55,7 @@ public class App {
     }
 
     // 명언을 최신순으로 정렬해서 복사한 리스트 반환
-    List<WiseSaying> findForList() {
+    private List<WiseSaying> findForList() {
         List<WiseSaying> copy = new ArrayList<>();
         // 뒤에서부터 앞으로 읽어서 최신순 정렬된 리스트 생성
         for (int i = wiseSayings.size() - 1; i >= 0; i--) {
@@ -67,7 +67,7 @@ public class App {
 
 
     // 명언 등록 기능
-    void actionWrite() {
+    private void actionWrite() {
         System.out.print("명언 : ");
         String content = scanner.nextLine().trim();
 
@@ -93,7 +93,7 @@ public class App {
 
 
     // 명언 삭제 기능
-    void actionDelete(String cmd) {
+    private void actionDelete(String cmd) {
         // "삭제=번호" 형태에서 번호 부분 추출
         String[] cmdBits = cmd.split("=", 2);
 
@@ -117,7 +117,7 @@ public class App {
     }
 
     // 명언 삭제: 리스트에서 ID가 일치하는 항목 제거
-    boolean delete(int id) {
+    private boolean delete(int id) {
         for (int i = 0; i < wiseSayings.size(); i++) {
             if (wiseSayings.get(i).id == id) {
                 wiseSayings.remove(i);
@@ -129,7 +129,7 @@ public class App {
 
 
     // 명언 수정 기능
-    void actionModify(String cmd) {
+    private void actionModify(String cmd) {
         // "수정=번호"에서 번호 추출
         String[] cmdBits = cmd.split("=", 2);
 
@@ -167,7 +167,7 @@ public class App {
 
     // ID로 명언 찾기
     //"wiseSayings 리스트 안에 있는 명언 하나하나를 차례대로 꺼내서, wiseSaying이라는 이름으로 사용할게!"
-    WiseSaying findById(int id) {
+    private WiseSaying findById(int id) {
         for (WiseSaying ws : wiseSayings) {
             if (ws.id == id) return ws;
         }
@@ -175,7 +175,7 @@ public class App {
     }
 
     // 명언 수정 적용
-    void modify(WiseSaying wiseSaying, String content, String author) {
+    private void modify(WiseSaying wiseSaying, String content, String author) {
         wiseSaying.content = content;
         wiseSaying.author = author;
     }
